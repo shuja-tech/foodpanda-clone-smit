@@ -1,0 +1,528 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About</title>
+
+  <!-- If you already have a global stylesheet (the one we built), link it here instead of the <style> block. -->
+  <!-- <link rel="stylesheet" href="styles.css"> -->
+
+  <style>
+    :root{
+      --brand:#ff2b85;
+      --bg:#f8f8f8;
+      --text:#111;
+      --muted:#f0f0f0;
+      --white:#fff;
+      --card-border:#e7e7e7;
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --hero-overlay: rgba(0,0,0,.45);
+      --container: 1100px;
+    }
+
+    /* ==== Base ==== */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:#222}
+
+    img{max-width:100%;height:auto;display:block}
+
+    /* ==== Header (simple version) ==== */
+    header{
+      position: sticky; top: 0; z-index: 50;
+      background: var(--white);
+      box-shadow: 0 1px 8px rgba(0,0,0,.06);
+    }
+    .nav-wrap{
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 12px 16px;
+      display: flex; align-items: center; gap: 16px; justify-content: space-between;
+    }
+    .brand{
+      display:flex;align-items:center;gap:10px;white-space:nowrap
+    }
+    .brand img{width:36px;height:36px;border-radius:8px;object-fit:cover}
+    .brand span{color:var(--brand);font-weight:800;font-size:22px}
+
+    .nav{
+      display:flex;gap:18px;align-items:center;flex-wrap:wrap
+    }
+    .nav a{
+      color:#111;text-decoration:none;font-weight:600;font-size:14px
+    }
+    .nav .cta{
+      background:var(--brand);color:#fff;border-radius:999px;padding:8px 14px
+    }
+
+    /* ==== HERO (About) ==== */
+    .about-hero{
+      position:relative; ;
+      min-height: 52vh;
+      display:grid;place-items:end start;
+      background: #ff2b85;
+      color:#fff;
+    }
+    .about-hero::before{
+      content:""; position:absolute; inset:0; z-index:-2;
+      background:url("images/about-hero.jpg") center/cover no-repeat;
+    }
+    .about-hero::after{
+      content:""; position:absolute; inset:0; z-index:-1; background:var(--hero-overlay);
+    }
+    .about-hero .hero-inner{
+      max-width: var(--container);
+      width:100%;
+      margin: 0 auto;
+      padding: clamp(28px,5vw,48px) 16px;
+    }
+    .about-hero h1{
+      margin:0;
+      font-size: clamp(2.2rem, 6vw, 4rem);
+      line-height:1.05;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+    }
+
+    /* ==== Intro Section ==== */
+    .intro{
+      max-width: var(--container);
+      margin: clamp(32px,6vw,64px) auto 0;
+      padding: 0 16px;
+    }
+    .intro h2{
+      font-size: clamp(1.8rem,4vw,2.6rem);
+      margin: 0 0 10px; line-height:1.2; font-weight: 900;
+    }
+    .intro p{
+      font-size: clamp(1rem,2.2vw,1.125rem);
+      line-height: 1.7; margin:0; color:#333;
+      max-width: 70ch;
+    }
+
+    /* ==== Stats band ==== */
+    .stats{
+      margin-top: clamp(28px,5vw,48px);
+      background:#fff; box-shadow: var(--shadow);
+      border-radius: 12px;
+      padding: 22px;
+      display:grid; grid-template-columns:1fr 1fr; gap: 12px;
+    }
+    .stat{
+      text-align:center; padding: 10px 6px;
+    }
+    .stat .num{
+      font-size: clamp(1.6rem,4.5vw,2.2rem);
+      font-weight: 900; color:#000;
+    }
+    .stat .label{ color:#555; font-weight:600 }
+
+    @media (min-width:768px){
+      .stats{grid-template-columns: repeat(4,1fr)}
+    }
+
+    /* ==== Values Grid ==== */
+    
+   
+
+
+/* === Our values (pills) === */
+
+
+.values-pills{
+  background: var(--white);
+  padding: clamp(40px, 6vw, 80px) 16px;
+}
+
+.values-pills__inner{
+  max-width: 1100px; /* match your container width */
+  margin: 0 auto;
+  text-align: center;
+}
+
+.values-pills h2{
+  margin: 0 0 clamp(16px, 3vw, 24px);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.15;
+  font-weight: 900;
+  color: var(--text);
+}
+
+/* Primary pill row */
+.values-pills__primary{
+  display: flex;
+  justify-content: center;
+  margin-bottom: clamp(18px, 3.5vw, 28px);
+}
+
+/* Pills container (outlined) */
+.values-pills__list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(10px, 2vw, 16px);
+  justify-content: center;
+}
+
+/* Base pill */
+.pill{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1;
+  transition: background-color .15s ease, color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+
+/* Filled (primary) */
+.pill--filled{
+  background: transparent;
+  color: #ff2b85;
+  border: 2px solid #ff2b85;
+  box-shadow: 0 4px 18px rgba(0,0,0,.12);
+}
+
+/* Outlined (secondary) */
+.pill--outline{
+  background: transparent;
+  color: var(--brand);
+  border: 2px solid var(--brand);
+  cursor: pointer;
+}
+
+/* Hover / focus styles */
+.pill--outline:hover{
+  background: rgba(255, 43, 133, 0.08);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(255, 43, 133, 0.15);
+}
+
+.pill--outline:focus-visible,
+.pill--filled:focus-visible{
+  outline: 2px solid rgba(255,43,133,.45);
+  outline-offset: 2px;
+}
+
+/* Wrapping behavior on very small screens */
+@media (max-width: 520px){
+  .pill{
+    padding: 12px 16px;
+    white-space: normal;      /* allow 2 lines if needed */
+    line-height: 1.2;
+  }
+}
+
+
+    /* ==== Story split (image left / text right) ==== */
+    .story{
+      margin: clamp(40px,6vw,72px) 0;
+      background: var(--white);
+    }
+    .story-inner{
+      max-width: var(--container); margin:0 auto; padding: 0 16px;
+      display:grid; gap: clamp(16px,4vw,28px);
+      grid-template-columns: 1fr;
+      align-items:center;
+    }
+    .story-media{
+      background:#f7d1e1; border-radius:12px; padding: clamp(12px,2.5vw,20px);
+      box-shadow: var(--shadow);
+    }
+    .story-media img{width:100%; height:auto; object-fit:contain; border-radius:8px}
+    .story-copy h3{margin:0 0 10px; font-size: clamp(1.6rem,4vw,2.4rem); font-weight: 900}
+    .story-copy p{margin:0 0 16px; color:#333; line-height:1.7; max-width: 65ch}
+    .story-copy .cta{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;padding:12px 20px}
+
+    @media (min-width:768px){ .story-inner{ grid-template-columns: 1.05fr 1fr } }
+
+    /* ==== Timeline (simple) ==== */
+    .timeline{
+      max-width: var(--container);
+      margin: clamp(40px,6vw,72px) auto 0;
+      padding: 0 16px;
+    }
+    .timeline h3{margin:0 0 16px; font-size: clamp(1.4rem,3.2vw,2rem); font-weight: 900}
+    .timeline-list{
+      display:grid; gap:14px;
+      grid-template-columns: 1fr;
+    }
+    .tl-item{
+      background:#fff;border:1px solid var(--card-border);border-radius:12px;padding:16px;box-shadow:var(--shadow)
+    }
+    .tl-item time{display:block;font-weight:800;color:#000;margin-bottom:4px}
+    .tl-item p{margin:0;color:#444; line-height:1.6}
+    @media (min-width:768px){ .timeline-list{ grid-template-columns: repeat(3,1fr)} }
+
+    /* ==== Footer (full-bleed) ==== */
+    .site-footer{width:100%;background:#ff2b85;color:#fff;margin: clamp(40px,6vw,72px) 0 0}
+    .footer-inner{max-width: var(--container); margin:0 auto; padding: clamp(32px,6vw,64px) 16px}
+    .footer-top{display:grid; gap: clamp(24px,5vw,40px)}
+    .footer-brand{display:flex;align-items:center;gap:10px}
+    .footer-brand img{width:36px;height:36px;border-radius:8px;object-fit:cover}
+    .footer-brand .brand-name{color:var(--brand);font-weight:800;font-size:22px}
+    .footer-columns{display:grid;grid-template-columns:1fr;gap: clamp(24px,4vw,40px)}
+    .footer-col h4{margin:0 0 10px;font-size:16px;font-weight:800}
+    .footer-col ul{margin:0;padding:0;list-style:none}
+    .footer-col li{margin:0 0 8px}
+    .footer-col a{color:#fff;text-decoration:none;opacity:.95}
+    .footer-col a:hover{text-decoration:underline;opacity:1}
+    .socials{display:flex;gap:12px;align-items:center}
+    .socials a{display:inline-flex;width:36px;height:36px;border-radius:50%;align-items:center;justify-content:center;background:#fff;color:#000;font-weight:800;text-decoration:none}
+    .footer-bottom{border-top:1px solid rgba(255,255,255,.2);margin-top: clamp(28px,5vw,48px);padding: 14px 0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    @media (min-width:768px){ .footer-columns{grid-template-columns:1fr 1fr 1fr} }
+
+
+    .site-footer {
+  width: 100%;
+  background: #000;
+  color: var(--white);
+  margin: 0;              /* remove any default margins */
+  padding: 0;             /* we'll pad the inner container instead */
+}
+
+/* Centered content, but footer stays full width */
+.footer-inner {
+  max-width: 1100px;      /* match your page’s container width */
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 64px) 16px;
+}
+
+/* Layout */
+.footer-top { display: grid; gap: clamp(24px, 5vw, 40px); }
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+.footer-brand .brand-name { color: var(--brand); font-weight: 700; font-size: 22px; }
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(24px, 4vw, 40px);
+}
+
+.footer-col h4 { font-size: 16px; font-weight: 700; margin: 0 0 12px; }
+.footer-col ul { list-style: none; margin: 0; padding: 0; }
+.footer-col li { margin-bottom: 8px; }
+.footer-col a { color: var(--white); text-decoration: none; opacity: .95; }
+.footer-col a:hover { text-decoration: underline; opacity: 1; }
+.footer-col a.current { font-weight: 700; }
+
+.socials { display: flex; align-items: center; gap: 16px; }
+.socials a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--white); color: #000; font-weight: 700; text-decoration: none;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: clamp(28px, 5vw, 48px);
+  padding: clamp(14px, 2.5vw, 18px) 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+
+/* Remove bottom white space: no extra margin/padding on footer container */
+.site-footer { padding-bottom: 0; }
+.footer-inner { padding-bottom: clamp(24px, 4vw, 36px); } /* controlled bottom padding only */
+
+/* Columns at tablet+ */
+@media (min-width: 768px) {
+  .footer-columns { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-wrap">
+      <a class="brand" href="index.html" aria-label="foodpanda home">
+        <img src="fp logo.png" alt="">
+        <span>foodpanda</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="current" aria-current="page">About</a>
+        <a href="newsroom.html">Newsroom</a>
+        <a href="partners.html">Partners</a>
+        <a href="ads.html">panda ads</a>
+        <a href="contact.html">Contact</a>
+        <a class="cta" href="#">Choose location</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="about-hero" role="banner">
+    <div class="hero-inner">
+        <img src="imgi_14_about-foodpanda.webp" alt="">
+      <h1>About foodpanda</h1>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="intro">
+    <h2>From food delivery to your everyday convenience</h2>
+    <p>
+      We connect customers with the best of their cities: delicious meals, fresh groceries,
+      and everyday essentials—delivered fast, reliably, and with care. Our platforms empower
+      local restaurants, shops, and riders through technology and thoughtful design.
+    </p>
+
+    <div class="stats" aria-label="Key stats">
+      <div class="stat">
+        <div class="num">3000+</div>
+        <div class="label">Merchant partners</div>
+      </div>
+      <div class="stat">
+        <div class="num">30 min</div>
+        <div class="label">Avg. delivery time</div>
+      </div>
+      <div class="stat">
+        <div class="num">99.9%</div>
+        <div class="label">Uptime</div>
+      </div>
+      <div class="stat">
+        <div class="num">24/7</div>
+        <div class="label">Customer support</div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+<section class="values-pills" aria-labelledby="values-title">
+  <div class="values-pills__inner">
+    <h2 id="values-title">Our values</h2>
+
+    <!-- Primary value (filled) -->
+    <div class="values-pills__primary">
+      <span class="pill pill--filled" role="listitem">
+        prioritise, decide, deliver
+      </span>
+    </div>
+
+    <!-- Secondary values (outlined) -->
+    <div class="values-pills__list" role="list" aria-label="Values list">
+      <button class="pill pill--outline" type="button" role="listitem">
+        start with customer, end with customer
+      </button>
+
+      <button class="pill pill--outline" type="button" role="listitem">
+        own it end‑to‑end
+      </button>
+
+      <button class="pill pill--outline" type="button" role="listitem">
+        challenge the status quo
+      </button>
+
+      <button class="pill pill--outline" type="button" role="listitem">
+        we before me
+      </button>
+
+      <button class="pill pill--outline" type="button" role="listitem">
+        plan for tomorrow, focus on today
+      </button>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Story split -->
+  <section class="story">
+    <div class="story-inner">
+      <div class="story-media">
+        <img src="imgi_15_fp-about-4.webp" alt="">
+      </div>
+      <div class="story-copy">
+        <h3>Built for convenience, designed for trust</h3>
+        <p>
+          From easy discovery and transparent pricing to live tracking and reliable support, our products
+          are designed to deliver convenience you can count on. Behind the scenes, we continuously
+          improve logistics, payments, and safety to keep every experience smooth.
+        </p>
+        <a class="cta" href="partners.html">Partner with us</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="fp logo.png" alt="foodpanda" width="28" height="28">
+        <span class="brand-name">foodpanda</span>
+      </div>
+
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a class="current" href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Newsroom</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Collaborate</h4>
+          <ul>
+            <li><a href="#">Explore careers</a></li>
+            <li><a href="#">Become a rider</a></li>
+            <li><a href="#">Feed your team</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Follow us on</h4>
+          <div class="socials">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="Instagram">◎</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Copyright © 2025 foodpanda</p>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.values-pills .pill--outline').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('is-selected');
+    });
+  });
+});
+</script>
+
+<style>
+.pill--outline.is-selected{
+  background: #000;
+  color: var(--white);
+  border-color: #000;
+}
+</style>
+
+
+
+
+</body>
+</html>

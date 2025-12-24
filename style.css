@@ -1,0 +1,587 @@
+
+:root {
+    --brand: #ff2b85;
+    --bg: #f8f8f8;
+    --text: #333;
+    --card-border: #ddd;
+    --muted: #f0f0f0;
+    --white: #fff;
+    --shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --hero-img-mobile: url("imgi_31_foodpanda-home-2.webp");
+    --hero-img-desktop: url("imgi_31_foodpanda-home-2.webp");
+    --overlay: rgba(0,0,0,0.45);
+    --text-light: #fff;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg);
+    color: var(--text);
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+header {
+    background-color: var(--white);
+    padding: 12px 16px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo { display: flex; align-items: center; gap: 10px; min-width: 0; }
+
+.logo a {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--brand);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1 1 100%;
+    order: 3;
+}
+
+.search-bar input {
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    width: 100%;
+    min-width: 0;
+    outline: none;
+}
+
+.search-bar button {
+    padding: 10px 16px;
+    background-color: var(--brand);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+nav { order: 2; }
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 16px;
+}
+
+nav li { margin: 0; }
+
+nav a { text-decoration: none; color: var(--text); font-size: 14px; }
+
+main { padding: 16px; }
+
+/* HERO */
+.hero {
+    position: relative;
+    aspect-ratio: 16/9;
+    min-height: 42vh;
+    max-height: 70vh;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    color: var(--text-light);
+    margin-bottom: 24px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: var(--hero-img-mobile);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    transform: translateZ(0);
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--overlay);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding: 0 12px;
+    max-width: 900px;
+}
+
+.hero-content h1 {
+    margin: 0 0 10px;
+    font-weight: 700;
+    line-height: 1.15;
+    font-size: clamp(1.6rem, 3.8vw, 3rem);
+}
+
+.hero-content p {
+    margin: 0;
+    line-height: 1.5;
+    font-size: clamp(1rem, 2.4vw, 1.25rem);
+    opacity: 0.95;
+}
+
+/* SEPARATE COPY SECTION BELOW HERO */
+.panda-copy { padding: 20px 16px; background: var(--bg); }
+.panda-copy-inner { max-width: 1100px; margin: 0 auto; }
+.panda-copy h2 {
+    color: var(--text);
+    font-size: clamp(1.6rem, 3.6vw, 2.8rem);
+    line-height: 1.25;
+    margin: 0 0 12px;
+    font-weight: 800;
+}
+.panda-copy p {
+    color: var(--text);
+    font-size: clamp(1rem, 2.2vw, 1.25rem);
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+
+
+
+
+/* === Split promo section (image left, text right) === */
+.promo-split {
+  padding: clamp(32px, 6vw, 64px) 16px;
+  background: var(--white);
+}
+
+.promo-split-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;         /* mobile: stack */
+  align-items: center;
+  gap: clamp(20px, 4vw, 40px);
+}
+
+/* Left: single image */
+.promo-media {
+  background: #f7d1e1;                /* soft pink backdrop similar to screenshot */
+  border-radius: 12px;
+  padding: clamp(12px, 2.5vw, 20px);
+  box-shadow: var(--shadow);
+}
+
+.promo-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;                /* preserve original aspect */
+  border-radius: 8px;
+}
+
+/* Right: text and button */
+.promo-copy h2 {
+  color: var(--text);
+  font-weight: 800;
+  line-height: 1.15;
+  font-size: clamp(1.6rem, 3.8vw, 2.6rem);
+  margin: 0 0 12px;
+}
+
+.promo-copy p {
+  color: var(--text);
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  line-height: 1.7;
+  margin: 0 0 20px;
+  max-width: 60ch;
+}
+
+.promo-copy .cta {
+  display: inline-block;
+  background: var(--brand);
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 12px 24px;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
+}
+
+.promo-copy .cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(255, 43, 133, 0.25);
+}
+
+.promo-copy .cta:active {
+  transform: translateY(0);
+  opacity: 0.9;
+}
+
+/* Tablet and up: side-by-side layout */
+@media (min-width: 768px) {
+  .promo-split-inner {
+    grid-template-columns: 1.05fr 1fr; /* slightly larger media side */
+  }
+}
+
+/* Large desktop: constrain height of visual for balance */
+@media (min-width: 1200px) {
+  .promo-media img {
+    max-height: 420px;                /* prevents the image from towering over text */
+  }
+}
+
+/* Optional: thicker spacing relative to previous sections */
+.promo-split {
+  margin-top: clamp(56px, 8vw, 120px); /* thick gap from panda-copy */
+}
+
+
+
+
+
+
+
+
+
+
+/* === Press / News section === */
+.press-section {
+  padding: clamp(32px, 6vw, 72px) 16px;
+  background: var(--white);
+  margin-top: clamp(48px, 8vw, 120px); /* nice gap from previous section */
+}
+
+.press-header {
+  max-width: 1100px;
+  margin: 0 auto clamp(24px, 4vw, 40px);
+  text-align: center;
+}
+
+.press-header h2 {
+  margin: 0 0 10px;
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.press-header p {
+  margin: 0;
+  font-size: clamp(1rem, 2.2vw, 1.125rem);
+  line-height: 1.7;
+  color: var(--text);
+  opacity: 0.9;
+}
+
+/* Cards row: horizontal scroll on mobile/tablet, grid fits on desktop */
+.press-cards {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 82%;
+  gap: clamp(16px, 3vw, 24px);
+  overflow-x: auto;
+  padding: 4px 2px 8px;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 576px) {
+  .press-cards { grid-auto-columns: 60%; }
+}
+
+@media (min-width: 992px) {
+  .press-cards {
+    grid-auto-columns: minmax(280px, 1fr);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+}
+
+.press-card {
+  position: relative;
+  height: clamp(280px, 36vw, 420px);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  scroll-snap-align: start;
+  background: var(--muted);
+}
+
+/* Ensure each article has an image filling the card */
+.press-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* fills without distortion */
+  display: block;
+}
+
+/* Gradient overlay to keep text readable */
+.press-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.15) 0%,
+    rgba(0,0,0,0.55) 60%,
+    rgba(0,0,0,0.85) 100%
+  );
+  z-index: 1;
+}
+
+/* Text overlay */
+.press-card-overlay {
+  position: absolute;
+  inset: auto 16px 16px 16px;
+  z-index: 2;
+  color: var(--white);
+  display: grid;
+  gap: 6px;
+}
+
+.press-tag {
+  display: inline-block;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  opacity: 0.95;
+}
+
+.press-card-overlay h3 {
+  margin: 0;
+  font-weight: 800;
+  line-height: 1.25;
+  font-size: clamp(1.1rem, 2.4vw, 1.4rem);
+  color: var(--white);
+}
+
+.press-card-overlay time {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  color: var(--white);
+}
+
+/* Hover affordance (desktop pointers) */
+@media (hover: hover) and (pointer: fine) {
+  .press-card {
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .press-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+}
+
+/* Optional: subtle scrollbar styling */
+.press-cards::-webkit-scrollbar { height: 10px; }
+.press-cards::-webkit-scrollbar-track { background: rgba(0,0,0,0.06); border-radius: 999px; }
+.press-cards::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.18); border-radius: 999px; }
+
+
+/* CARDS / GRID */
+.featured-restaurants { margin-bottom: 20px; }
+
+.restaurant-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.restaurant-card {
+    border: 1px solid var(--card-border);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    background: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.restaurant-card img {
+    width: 100%;
+    max-height: 160px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.panda-ads { text-align: center; }
+
+.ad-container img {
+    width: 100%;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+
+/* Full-bleed footer */
+.site-footer {
+  width: 100%;
+  background: #000;
+  color: var(--white);
+  margin: 0;              /* remove any default margins */
+  padding: 0;             /* we'll pad the inner container instead */
+}
+
+/* Centered content, but footer stays full width */
+.footer-inner {
+  max-width: 1100px;      /* match your page’s container width */
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 64px) 16px;
+}
+
+/* Layout */
+.footer-top { display: grid; gap: clamp(24px, 5vw, 40px); }
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+.footer-brand .brand-name { color: var(--brand); font-weight: 700; font-size: 22px; }
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(24px, 4vw, 40px);
+}
+
+.footer-col h4 { font-size: 16px; font-weight: 700; margin: 0 0 12px; }
+.footer-col ul { list-style: none; margin: 0; padding: 0; }
+.footer-col li { margin-bottom: 8px; }
+.footer-col a { color: var(--white); text-decoration: none; opacity: .95; }
+.footer-col a:hover { text-decoration: underline; opacity: 1; }
+.footer-col a.current { font-weight: 700; }
+
+.socials { display: flex; align-items: center; gap: 16px; }
+.socials a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--white); color: #000; font-weight: 700; text-decoration: none;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.2);
+  margin-top: clamp(28px, 5vw, 48px);
+  padding: clamp(14px, 2.5vw, 18px) 0;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+
+/* Remove bottom white space: no extra margin/padding on footer container */
+.site-footer { padding-bottom: 0; }
+.footer-inner { padding-bottom: clamp(24px, 4vw, 36px); } /* controlled bottom padding only */
+
+/* Columns at tablet+ */
+@media (min-width: 768px) {
+  .footer-columns { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+
+/* ≥ 576px */
+@media (min-width: 576px) {
+    header { padding: 14px 20px; }
+    .restaurant-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .search-bar { flex: 1 1 60%; order: 2; }
+    nav { order: 3; }
+    .panda-copy { padding: 22px 18px; }
+}
+
+/* ≤ 480px tweaks */
+@media (max-width: 480px) {
+    .hero {
+        aspect-ratio: 3/4;
+        min-height: 56vh;
+        border-radius: 10px;
+        padding: 20px;
+    }
+    .panda-copy { padding: 16px 14px; }
+}
+
+/* ≥ 768px */
+@media (min-width: 768px) {
+    header { flex-wrap: nowrap; gap: 16px; }
+    .search-bar { flex: 1 1 auto; max-width: 540px; order: 2; }
+
+    .hero {
+        aspect-ratio: 21/9;
+        min-height: 48vh;
+        max-height: 60vh;
+        border-radius: 14px;
+        padding: 32px;
+    }
+    .hero::before {
+        background-image: var(--hero-img-desktop);
+        background-position: center 40%;
+    }
+
+    .restaurant-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .restaurant-card img { max-height: 180px; }
+    nav a { font-size: 15px; }
+    .panda-copy { padding: 28px 24px; }
+}
+
+/* ≥ 992px */
+@media (min-width: 992px) {
+    header { padding: 16px 28px; }
+    .logo a { font-size: 24px; }
+    .search-bar input { width: 100%; }
+    .search-bar button { padding: 10px 18px; }
+
+    .hero { padding: 40px; }
+    .restaurant-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; }
+    .ad-container img { max-height: 260px; }
+
+    .panda-copy-inner { text-align: left; }
+}
+
+/* ≥ 1200px */
+@media (min-width: 1200px) {
+    main { width: 1100px; margin: 0 auto; }
+    header {
+        padding-left: calc((100vw - 1100px) / 2 + 16px);
+        padding-right: calc((100vw - 1100px) / 2 + 16px);
+    }
+    .hero {
+        max-width: 1200px;
+        margin: 0 auto 24px;
+        max-height: 56vh;
+    }
+    .restaurant-card img { max-height: 200px; }
+    .panda-copy-inner { padding: 0 8px; }
+}
+
+/* Touch + focus */
+button, a { touch-action: manipulation; }
+button:focus, input:focus, a:focus {
+    outline: 2px solid rgba(255, 43, 133, 0.4);
+    outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    .hero::before, .hero::after { transition: none !important; }
+}
